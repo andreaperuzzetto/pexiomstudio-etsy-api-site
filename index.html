@@ -1,0 +1,379 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+      name="description"
+      content="AgentPeXI Seller Ops Assistant is a private seller operations workspace for PexiomStudio."
+    >
+    <title>AgentPeXI Seller Ops Assistant | PexiomStudio</title>
+    <style>
+      :root {
+        --bg: #f7faf8;
+        --panel: #ffffff;
+        --panel-soft: #eef6f2;
+        --ink: #18221f;
+        --muted: #5e6b66;
+        --line: #d9e3df;
+        --accent: #167f68;
+        --accent-dark: #0e5f4d;
+        --shadow: 0 18px 50px rgba(24, 34, 31, 0.08);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background:
+          radial-gradient(circle at top right, rgba(22, 127, 104, 0.10), transparent 34rem),
+          linear-gradient(180deg, #fbfdfc 0%, var(--bg) 100%);
+        color: var(--ink);
+        font-family:
+          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", sans-serif;
+        line-height: 1.55;
+      }
+
+      a {
+        color: var(--accent-dark);
+      }
+
+      .page {
+        width: min(1120px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 48px 0 40px;
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: minmax(0, 1.3fr) minmax(280px, 0.7fr);
+        gap: 28px;
+        align-items: stretch;
+        margin-bottom: 24px;
+      }
+
+      .hero-main,
+      .status-panel,
+      .card,
+      .privacy {
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.88);
+        box-shadow: var(--shadow);
+      }
+
+      .hero-main {
+        padding: 38px;
+      }
+
+      .eyebrow {
+        margin: 0 0 12px;
+        color: var(--accent-dark);
+        font-size: 0.86rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        max-width: 760px;
+        margin: 0;
+        color: var(--ink);
+        font-size: 4.35rem;
+        line-height: 0.98;
+        letter-spacing: 0;
+      }
+
+      .lede {
+        max-width: 700px;
+        margin: 22px 0 0;
+        color: var(--muted);
+        font-size: 1.22rem;
+      }
+
+      .badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 26px;
+      }
+
+      .badge {
+        border: 1px solid rgba(22, 127, 104, 0.28);
+        background: var(--panel-soft);
+        color: var(--accent-dark);
+        padding: 8px 12px;
+        font-size: 0.92rem;
+        font-weight: 700;
+      }
+
+      .status-panel {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 28px;
+        background:
+          linear-gradient(145deg, rgba(22, 127, 104, 0.12), transparent 58%),
+          #ffffff;
+      }
+
+      .status-label {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.85rem;
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+
+      .status-value {
+        margin: 8px 0 20px;
+        font-size: 1.5rem;
+        font-weight: 800;
+      }
+
+      .status-list {
+        display: grid;
+        gap: 10px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .status-list li {
+        border-top: 1px solid var(--line);
+        padding-top: 10px;
+        color: var(--muted);
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+        margin: 24px 0;
+      }
+
+      .card {
+        padding: 24px;
+      }
+
+      .card h2,
+      .privacy h2 {
+        margin: 0 0 12px;
+        font-size: 1.18rem;
+      }
+
+      .card p,
+      .privacy p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .wide {
+        grid-column: span 2;
+      }
+
+      .checklist {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+        margin: 16px 0 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .checklist li {
+        border: 1px solid var(--line);
+        background: #fbfdfc;
+        padding: 12px 14px;
+        color: var(--ink);
+        font-weight: 650;
+      }
+
+      .check {
+        color: var(--accent-dark);
+        font-weight: 900;
+      }
+
+      .privacy {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(260px, 0.55fr);
+        gap: 24px;
+        padding: 28px;
+      }
+
+      .support {
+        border-left: 1px solid var(--line);
+        padding-left: 24px;
+      }
+
+      .support p + p {
+        margin-top: 10px;
+      }
+
+      footer {
+        margin-top: 22px;
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+
+      footer strong {
+        color: var(--ink);
+      }
+
+      @media (max-width: 840px) {
+        .hero,
+        .grid,
+        .privacy {
+          grid-template-columns: 1fr;
+        }
+
+        .wide {
+          grid-column: auto;
+        }
+
+        .checklist {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-main,
+        .status-panel,
+        .card,
+        .privacy {
+          padding: 22px;
+        }
+
+        .support {
+          border-left: 0;
+          border-top: 1px solid var(--line);
+          padding: 20px 0 0;
+        }
+
+        h1 {
+          font-size: 2.55rem;
+        }
+
+        .lede {
+          font-size: 1.06rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <section class="hero" aria-labelledby="page-title">
+        <div class="hero-main">
+          <p class="eyebrow">PexiomStudio</p>
+          <h1 id="page-title">AgentPeXI Seller Ops Assistant</h1>
+          <p class="lede">
+            Private seller operations workspace for one owner-operated Etsy
+            shop. AgentPeXI helps prepare and review listing records, manual
+            publish packs, pricing decisions, compliance checks, and analytics.
+          </p>
+          <div class="badges" aria-label="Application boundaries">
+            <span class="badge">Internal tool</span>
+            <span class="badge">Owner operated</span>
+            <span class="badge">Official API only</span>
+            <span class="badge">Manual-assisted publishing</span>
+          </div>
+        </div>
+
+        <aside class="status-panel" aria-label="Current API phase">
+          <div>
+            <p class="status-label">Current API phase</p>
+            <p class="status-value">Read-only mapping</p>
+          </div>
+          <ul class="status-list">
+            <li>Maps Etsy shop and listing records to internal records.</li>
+            <li>No listing creation, editing, or publishing in phase one.</li>
+            <li>No sales-data sync or email sending in phase one.</li>
+          </ul>
+        </aside>
+      </section>
+
+      <section class="grid" aria-label="Application purpose">
+        <article class="card">
+          <h2>Operational Purpose</h2>
+          <p>
+            AgentPeXI supports internal seller operations for PexiomStudio:
+            listing organization, product records, manual publish preparation,
+            pricing review, compliance checks, and analytics review.
+          </p>
+        </article>
+
+        <article class="card">
+          <h2>Access And Users</h2>
+          <p>
+            This application is used only by the shop owner/operator. It is not
+            a buyer tool, public seller platform, or commercial marketplace app.
+          </p>
+        </article>
+
+        <article class="card">
+          <h2>Publishing Model</h2>
+          <p>
+            Publishing remains manual-assisted. Any future write action would
+            require explicit owner review and approval before it is performed.
+          </p>
+        </article>
+
+        <article class="card wide">
+          <h2>Control Boundaries</h2>
+          <p>
+            The application is designed to stay conservative, auditable, and
+            aligned with the approved Etsy API purpose.
+          </p>
+          <ul class="checklist">
+            <li><span class="check">OK</span> Uses Etsy's official API only</li>
+            <li><span class="check">OK</span> Uses OAuth and minimal scopes</li>
+            <li><span class="check">OK</span> Does not scrape Etsy</li>
+            <li><span class="check">OK</span> Does not use browser automation</li>
+            <li><span class="check">OK</span> Does not send email</li>
+            <li><span class="check">OK</span> Does not publish hands-free</li>
+            <li><span class="check">OK</span> Does not train AI models on Etsy data</li>
+            <li><span class="check">OK</span> Keeps API credentials private</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h2>First Phase</h2>
+          <p>
+            The first API phase is limited to read-only shop and listing mapping
+            so local AgentPeXI records can be connected to the owner's Etsy
+            shop records.
+          </p>
+        </article>
+      </section>
+
+      <section class="privacy" aria-label="Privacy and support">
+        <div>
+          <h2>Privacy</h2>
+          <p>
+            Data accessed through the Etsy API is used only for internal
+            PexiomStudio shop operations. It is not sold, shared, used for
+            advertising, or used to train AI models. API credentials and tokens
+            are stored privately and are never published on this website.
+          </p>
+        </div>
+        <div class="support">
+          <h2>Support</h2>
+          <p>
+            For support, compliance questions, or application review contact:
+          </p>
+          <p>
+            <a href="mailto:peruzzetto.saas@gmail.com">peruzzetto.saas@gmail.com</a>
+          </p>
+        </div>
+      </section>
+
+      <footer>
+        <p>
+          <strong>Etsy disclaimer:</strong> The term "Etsy" is a trademark of
+          Etsy, Inc. This Application uses Etsy's API, but is not endorsed or
+          certified by Etsy.
+        </p>
+      </footer>
+    </main>
+  </body>
+</html>
